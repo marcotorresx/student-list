@@ -19,7 +19,7 @@ const gradeLimits = [
 ];
 
 // Function that transform a mexican grade into an american grade and returns the result
-function getUsGrade(mxGrade) {
+export function getUsGrade(mxGrade) {
   let usGrade = "";
   for (const pair of gradeLimits) {
     // If mx grade is inside the range, it is the us grade
@@ -32,7 +32,7 @@ function getUsGrade(mxGrade) {
 }
 
 // Function that transform a mexican data row into an american data row
-function getUSFormat(row) {
+export function getUSFormat(row) {
   // Format name
   const nameArray = row.Name.split(" ");
   const Name = nameArray[0] + " " + nameArray[1];
