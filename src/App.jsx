@@ -53,8 +53,8 @@ function App() {
   const [mxData, setMxData] = useState([]);
   const [usData, setUsData] = useState([]);
 
-  console.log(mxData);
-  console.log(usData);
+  // console.log(mxData);
+  // console.log(usData);
 
   // Generate us data
   function generateUsData(results) {
