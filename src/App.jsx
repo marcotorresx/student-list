@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import "./App.css";
 import Papa from "papaparse";
 import { MainContainer } from "./components/MainContainer/mainContainer";
 import { StudentsContainer } from "./components/StudentsContainer/studentsContainer";
-
 
 const gradeLimits = [
   { grade: "E", limit: 64 },
@@ -19,9 +18,11 @@ const gradeLimits = [
   { grade: "A", limit: 100 },
 ];
 
+// Function that transform a mexican grade into an american grade and returns the result
 function getUsGrade(mxGrade) {
   let usGrade = "";
   for (const pair of gradeLimits) {
+    // If mx grade is inside the range, it is the us grade
     if (mxGrade <= pair.limit) {
       usGrade = pair.grade;
       break;
@@ -30,6 +31,7 @@ function getUsGrade(mxGrade) {
   return usGrade;
 }
 
+// Function that transform a mexican data row into an american data row
 function getUSFormat(row) {
   // Format name
   const nameArray = row.Name.split(" ");
@@ -50,11 +52,9 @@ function getUSFormat(row) {
 
 function App() {
   // Mexican and American data
-  const [mxData, setMxData] = useState([]);
-  const [usData, setUsData] = useState([]);
-
-  // console.log(mxData);
-  // console.log(usData);
+  const [mxData, setMxData] = React.useState([]);
+  const [usData, setUsData] = React.useState([]);
+  const [loading, setLoading] = React.useState(true);
 
   // Generate us data
   function generateUsData(results) {
@@ -64,6 +64,7 @@ function App() {
     // Set states
     setMxData(results.data);
     setUsData(usFormatedData);
+    setLoading(false); // Let render
   }
 
   // Change file
@@ -78,18 +79,18 @@ function App() {
   return (
     <div className="App">
       <MainContainer>
-        <StudentsContainer mxData={mxData} usaData={usData}/>
         <div className="inputUpload reusableCard">
           <input
-          type="file"
-          name="file"
-          accept=".csv"
-          onChange={changeFile}
-          style={{ display: "block", margin: "10px auto" }}
+            type="file"
+            name="file"
+            accept=".csv"
+            onChange={changeFile}
+            style={{ display: "block", margin: "10px auto" }}
           />
         </div>
+        {/* Don´t render tables until the data is proccessed */}
+        {!loading && <StudentsContainer mxData={mxData} usData={usData} />}
       </MainContainer>
-      
     </div>
   );
 }

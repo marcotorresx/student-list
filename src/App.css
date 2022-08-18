@@ -37,14 +37,13 @@
   }
 }
 
-.inputUpload{
-  width: 88%;
+.inputUpload {
+  width: 99%;
   margin-bottom: 15px;
   padding: 5px;
-  
 }
 
-.reusableCard{
-  background-color: rgb(226, 226, 226);
+.reusableCard {
+  background-color: rgb(177, 217, 255);
   border-radius: 10px;
 }
