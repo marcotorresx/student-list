@@ -78,7 +78,7 @@ function App() {
   return (
     <div className="App">
       <MainContainer>
-        <StudentsContainer />
+        <StudentsContainer mxData={mxData} usaData={usData}/>
         <div className="inputUpload reusableCard">
           <input
           type="file"

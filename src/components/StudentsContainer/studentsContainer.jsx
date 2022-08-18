@@ -2,11 +2,15 @@ import React from "react";
 import './studetnsContainerStyle.css'
 import { Students } from "../Students/students";
 
-function StudentsContainer() {
+function StudentsContainer({mxData, usData}) {
     return(
         <div className="studentsContainer">
-            <Students title="Mexican Students"/>
-            <Students title="USA students"/>
+            <Students 
+            title="Mexican Students"
+            data={mxData}/>
+            <Students 
+            title="USA students"
+            data={usData}/>
         </div>
     )
 }
