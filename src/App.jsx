@@ -14,15 +14,24 @@ const rows = [
 
 function App() {
   function getUSFormat(row) {
-    console.log(row);
+    // Format name
+    const nameArray = row.Name.split(" ");
+    const Name = nameArray[0] + " " + nameArray[1];
 
-    const formatedRow = {};
+    // Format ID
+    const ID = row.ID + "@tec.mx";
 
-    return formatedRow;
+    // Format graduation
+    const dateArray = row.Graduation.split("/");
+    const Graduation = `${dateArray[1]}/${dateArray[0]}/${dateArray[2]}`;
+
+    // Format Grade
+
+    return { Index: row.Index, Name, ID, Graduation };
   }
 
   React.useEffect(() => {
-    getUSFormat(rows[0]);
+    console.log(getUSFormat(rows[0]));
   });
 
   const [users, setUsers] = useState("");
