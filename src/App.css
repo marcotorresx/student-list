@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 }
+
+.inputUpload{
+  width: 88%;
+  margin-bottom: 15px;
+  padding: 5px;
+  
+}
+
+.reusableCard{
+  background-color: rgb(226, 226, 226);
+  border-radius: 10px;
+}

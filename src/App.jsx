@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import "./App.css";
 import Papa from "papaparse";
+import { MainContainer } from "./components/MainContainer/mainContainer";
+import { StudentsContainer } from "./components/StudentsContainer/studentsContainer";
+
 
 const gradeLimits = [
   { grade: "E", limit: 64 },
@@ -74,13 +77,19 @@ function App() {
 
   return (
     <div className="App">
-      <input
-        type="file"
-        name="file"
-        accept=".csv"
-        onChange={changeFile}
-        style={{ display: "block", margin: "10px auto" }}
-      />
+      <MainContainer>
+        <StudentsContainer />
+        <div className="inputUpload reusableCard">
+          <input
+          type="file"
+          name="file"
+          accept=".csv"
+          onChange={changeFile}
+          style={{ display: "block", margin: "10px auto" }}
+          />
+        </div>
+      </MainContainer>
+      
     </div>
   );
 }
