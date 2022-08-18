@@ -1,35 +1,33 @@
 import React from "react";
-import './students.css'
+import "./students.css";
 
-function Students({title, data}) {
-    // data.lenght siempra da undefined
-    // necesito otra condicion para este if
-    if ({data}.lenght == undefined){
-        return(
-        <div className="students reusableCard">
-            <h2> {title} </h2>
-            <div className="names reusableCard">
-                <p>No data</p>
-                {console.log('AQUI')}
-            </div>
-        </div>
-        )
-    } else {
-        return(
-            <div className="students reusableCard">
-                <h2> {title} </h2>
-                <div className="names reusableCard">
-                    {/* TODO: RENDER DATA HERE */}
-                    {data.map((d) => 
-                    <p> {d.name}, {d.id} </p>)}
-                </div>
-            </div>
-        )
-    }
-    
+function Students({ title, data }) {
+  console.log("data", data);
 
-    
+  return (
+    <div className="students reusableCard">
+      <h2> {title} </h2>
+      <div className="names reusableCard">
+        <table>
+          <tr>
+            <th>Company</th>
+            <th>Contact</th>
+            <th>Country</th>
+          </tr>
+          <tr>
+            <td>Alfreds Futterkiste</td>
+            <td>Maria Anders</td>
+            <td>Germany</td>
+          </tr>
+          <tr>
+            <td>Centro comercial Moctezuma</td>
+            <td>Francisco Chang</td>
+            <td>Mexico</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  );
 }
-    
 
-export {Students}
+export { Students };

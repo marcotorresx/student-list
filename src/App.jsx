@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import "./App.css";
 import Papa from "papaparse";
 import { MainContainer } from "./components/MainContainer/mainContainer";
 import { StudentsContainer } from "./components/StudentsContainer/studentsContainer";
-
 
 const gradeLimits = [
   { grade: "E", limit: 64 },
@@ -50,11 +49,9 @@ function getUSFormat(row) {
 
 function App() {
   // Mexican and American data
-  const [mxData, setMxData] = useState([]);
-  const [usData, setUsData] = useState([]);
-
-  // console.log(mxData);
-  // console.log(usData);
+  const [mxData, setMxData] = React.useState([]);
+  const [usData, setUsData] = React.useState([]);
+  const [loading, setLoading] = React.useState(true);
 
   // Generate us data
   function generateUsData(results) {
@@ -64,6 +61,7 @@ function App() {
     // Set states
     setMxData(results.data);
     setUsData(usFormatedData);
+    setLoading(false);
   }
 
   // Change file
@@ -78,18 +76,17 @@ function App() {
   return (
     <div className="App">
       <MainContainer>
-        <StudentsContainer mxData={mxData} usaData={usData}/>
         <div className="inputUpload reusableCard">
           <input
-          type="file"
-          name="file"
-          accept=".csv"
-          onChange={changeFile}
-          style={{ display: "block", margin: "10px auto" }}
+            type="file"
+            name="file"
+            accept=".csv"
+            onChange={changeFile}
+            style={{ display: "block", margin: "10px auto" }}
           />
         </div>
+        {!loading && <StudentsContainer mxData={mxData} usData={usData} />}
       </MainContainer>
-      
     </div>
   );
 }
