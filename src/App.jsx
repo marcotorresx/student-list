@@ -18,9 +18,11 @@ const gradeLimits = [
   { grade: "A", limit: 100 },
 ];
 
+// Function that transform a mexican grade into an american grade and returns the result
 function getUsGrade(mxGrade) {
   let usGrade = "";
   for (const pair of gradeLimits) {
+    // If mx grade is inside the range, it is the us grade
     if (mxGrade <= pair.limit) {
       usGrade = pair.grade;
       break;
@@ -29,6 +31,7 @@ function getUsGrade(mxGrade) {
   return usGrade;
 }
 
+// Function that transform a mexican data row into an american data row
 function getUSFormat(row) {
   // Format name
   const nameArray = row.Name.split(" ");
@@ -61,7 +64,7 @@ function App() {
     // Set states
     setMxData(results.data);
     setUsData(usFormatedData);
-    setLoading(false);
+    setLoading(false); // Let render
   }
 
   // Change file
@@ -85,6 +88,7 @@ function App() {
             style={{ display: "block", margin: "10px auto" }}
           />
         </div>
+        {/* Don´t render tables until the data is proccessed */}
         {!loading && <StudentsContainer mxData={mxData} usData={usData} />}
       </MainContainer>
     </div>

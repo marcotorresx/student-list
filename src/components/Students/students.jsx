@@ -2,8 +2,6 @@ import React from "react";
 import "./students.css";
 
 function Students({ title, data }) {
-  console.log("data", data);
-
   return (
     <div className="students reusableCard">
       <h2> {title} </h2>
