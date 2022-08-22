@@ -5,8 +5,18 @@ import { Students } from "../Students/students";
 function StudentsContainer({ mxData, usData }) {
   return (
     <div className="studentsContainer">
-      <Students title="Mexican Format" data={mxData} />
-      <Students title="USA Format" data={usData} />
+      <div
+        className="mxStudentsData students reusableCard"
+        data-testid="mxStudentsData"
+      >
+        <Students title="Mexican Format" data={mxData} />
+      </div>
+      <div
+        className="usStudentsData students reusableCard"
+        data-testid="usStudentsData"
+      >
+        <Students title="USA Format" data={usData} />
+      </div>
     </div>
   );
 }

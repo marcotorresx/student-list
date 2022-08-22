@@ -3,8 +3,8 @@ import "./students.css";
 
 function Students({ title, data }) {
   return (
-    <div className="students reusableCard">
-      <h2> {title} </h2>
+    <>
+      <h2 data-testid="dataTitle"> {title} </h2>
       <table className="table reusableCard">
         <thead>
           <tr>
@@ -17,7 +17,7 @@ function Students({ title, data }) {
         </thead>
         <tbody>
           {data?.map((row) => (
-            <tr>
+            <tr key={title + row.ID}>
               <td>{row.Index}</td>
               <td>{row.Name}</td>
               <td>{row.ID}</td>
@@ -27,7 +27,7 @@ function Students({ title, data }) {
           ))}
         </tbody>
       </table>
-    </div>
+    </>
   );
 }
 
