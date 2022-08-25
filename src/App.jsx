@@ -4,6 +4,7 @@ import Papa from "papaparse";
 import { MainContainer } from "./components/MainContainer/mainContainer";
 import { StudentsContainer } from "./components/StudentsContainer/studentsContainer";
 
+// Helper to transform the mx grades to us grades
 const gradeLimits = [
   { grade: "E", limit: 64 },
   { grade: "D", limit: 66 },
